@@ -16,7 +16,7 @@ Launch Yankel with
 
     M-x yankel RET
 
-then enter the address of BabelWeb server.
+then enter address of BabelWeb server.
 
 Use `C-d`, `C-o` and `C-m` to disconnect, reconnect and switch router respectively.
 
