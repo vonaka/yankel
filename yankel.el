@@ -238,13 +238,13 @@
            (insert "\n" border "\n"
                    (funcall string-of-row
                             (lambda (column)
-                              (yankel-string-of-cell (alist-get column row)))
+                              (yankel-cell-to-string (alist-get column row)))
                             (char-to-string yankel-cell-vertical-char)
                             color))))
        (yankel-table-rows table))
       (insert "\n" border))))
 
-(defun yankel-string-of-cell (cell)
+(defun yankel-cell-to-string (cell)
   (let ((string (prin1-to-string cell t)))
     (cond ((string= string "nil") " ")
           ((string= string "t") "yep")
