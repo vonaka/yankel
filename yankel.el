@@ -194,10 +194,9 @@
 
 (defun yankel-draw-table (table pos)
   (goto-char pos)
-  (let (widths)
-    (dolist (column (yankel-table-columns table))
-      (setq widths
-            `((,column . ,(string-width (symbol-name column))) . ,widths)))
+  (let ((widths (mapcar #'(lambda (column)
+                            (cons column (string-width (symbol-name column))))
+                        (yankel-table-columns table))))
     (maphash
      (lambda (id row)
        (dolist (column (yankel-table-columns table))
