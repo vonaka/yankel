@@ -280,9 +280,9 @@
     (yankel-update-babel-state
      (json-read-from-string
       (websocket-frame-text frame)))
-    (let (points)
-      (dolist (window (get-buffer-window-list))
-        (setq points `((,window . ,(window-point window)) . ,points)))
+    (let ((points (mapcar #'(lambda (window)
+                              (cons window (window-point window)))
+                          (get-buffer-window-list))))
       (erase-buffer)
       (insert (propertize " Neighbours\n" 'face 'bold))
       (yankel-draw-table
